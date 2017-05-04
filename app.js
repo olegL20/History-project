@@ -20,14 +20,19 @@ var connection = mysql.createConnection
         user: 'root',
         password:'',
         database: 'mydb',
-        debug: false
+
 
     }
 )
 connection.connect();
 
-
-
+function keepalive() {
+    connection.query('select 1', [], function(err, result) {
+        if(err) return console.log(err);
+        // Successul keepalive
+    });
+}
+setInterval(keepalive, 6*5);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -106,7 +111,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.set('port',(process.env.PORT ||3000))
-app.listen(app.get('port'),function () {});
+
+app.listen(3000,function () {});
 
 module.exports = app;

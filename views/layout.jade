@@ -9,18 +9,18 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-nav
-  .container
-    .col-lg-12.navbar-header
-     h1
-       a(href='#') Моя країна
-     ul.nav.navbar-nav.navbar-right
-       li.col-lg-3
-         h4
-          a(href='#') Вхід
-       li.col-lg-6
-         h4
-           a(href='#') Реєстрація
-       li.col-lg-1
-        h4
-         span.glyphicon.glyphicon-log-in
+.container
+    .header.clearfix
+        nav
+            ul.nav.nav-pills.pull-right
+                li.active(role='presentation')
+                    a(href='/') Главная
+                li(role='presentation')
+                    a(href='/auth/login') Вхід
+                li(role='presentation')
+                    a(href='/auth/register') Реєстрація
+                li(role='presentation')
+                    a(href='/logout') Вихід
+        h3.text-muted Моя країна
+    .col-lg-12
+     block content
