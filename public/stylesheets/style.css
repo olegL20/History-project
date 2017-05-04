@@ -1,11 +1,6 @@
-body {
-  margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-.navbar-right
+body
 {
-  margin-top: -50px;
+margin-top: 40px;
+  font-size: 16px;
 }
-a {
-  color: #6799ff;
-}
+.notice-error
