@@ -26,7 +26,6 @@ var connection = mysql.createConnection
 )
 connection.connect();
 
-console.log(connection);
 
 
 
@@ -56,6 +55,8 @@ app.use(
         resave: true
     })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use
 (
@@ -77,6 +78,8 @@ app.use
     )
 );
 
+app.use(flash());
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/auth', auth);
@@ -87,18 +90,23 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  res.locals.success_msg= req.flash('success_msg');
+  res.locals.error_msg= req.flash('error_msg');
+  res.locals.error= req.flash('error');
+  next();
   // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
 
-
-app.listen(3000,function () {});
+app.set('port',(process.env.PORT ||3000))
+app.listen(app.get('port'),function () {});
 
 module.exports = app;
