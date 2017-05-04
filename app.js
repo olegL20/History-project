@@ -8,12 +8,12 @@ var validator = require('express-validator');
 var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var Sequelize = require('sequelize');
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var http = require('http');
 
 var mysql = require('mysql');
-var connection = mysql.createPool
+var connection = mysql.createConnection
 (
     {
         host: 'localhost',
@@ -26,6 +26,7 @@ var connection = mysql.createPool
 )
 connection.connect();
 
+console.log(connection);
 
 
 
@@ -47,8 +48,34 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+    session
+    ({
+        secret: 'secret',
+        saveUninitialized:true,
+        resave: true
+    })
+);
 
+app.use
+(
+    validator(
+        {
+            errorFormatter: function(param,msg,value)
+            {
+                var namespace = param.split('.'),
+                    root = namespace.shift(),
+                    formParam = root;
+                while (namespace.length)
+                {
+                    formParam+='['+namespace.shift()+']';
+                }
 
+            return { param:formParam, msg: msg, value: value}
+            }
+        }
+    )
+);
 
 app.use('/', index);
 app.use('/users', users);
