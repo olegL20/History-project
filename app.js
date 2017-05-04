@@ -2,15 +2,29 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var exphbs = require('express-handlebars');
+var session = require('express-session');
+var validator = require('express-validator');
+var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mysql = require('mysql');
 var Sequelize = require('sequelize');
 var passport = require('passport');
 var http = require('http');
 
+var mysql = require('mysql');
+var connection = mysql.createPool
+(
+    {
+        host: 'localhost',
+        user: 'root',
+        password:'',
+        database: 'mydb',
+        debug: false
 
-
+    }
+)
+connection.connect();
 
 
 
