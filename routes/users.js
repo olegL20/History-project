@@ -1,9 +1,18 @@
-var express = require('express');
-var router = express.Router();
+var db = require('../models')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+exports.signUp = function(req, res) {
+    res.render("signup.ejs");
+}
 
-module.exports = router;
+exports.register = function(req, res){
+    db.User.find({where: {username: req.username}}).success(function (user){
+        if(!user) {
+            db.User.create({username: req.body.username, password: req.body.password}).error(function(err){
+                console.log(err);
+            });
+        } else {
+            res.redirect('/signup')
+        }
+    })
+    res.redirect('/')
+};
