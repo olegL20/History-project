@@ -1,0 +1,35 @@
+//
+   Created by olegl on 04.05.2017.
+
+extends layout
+.container
+block content
+    h2.page-header Register
+    if(errors)
+        each error in errors
+         .alert.alert-danger
+          p=error['msg']
+
+    form(method='post', action='').form
+        .form-group
+            label Name
+            input.form-control(type='text', placeholder='Name', name='name')
+        .form-group
+            label Surname
+            input.form-control(type='text', placeholder='Surname', name='surname')
+        .form-group
+            label Email
+            input.form-control(type='email', placeholder='Email', name='email')
+        .form-group
+            label Password
+            input.form-control(type='password', placeholder='Password', name='password')
+        .form-group
+            label Confirm Password
+            input.form-control(type='password', placeholder='Password', name='password2')
+        .form-group
+            label Teacher
+            input.form-control(type='text', placeholder='Teacher', name='teacher')
+        .form-group
+            label Birthday
+            input.form-control(type='date', placeholder='Birthday', name='birth')
+        button.btn.btn-default(type='submit') Submit
