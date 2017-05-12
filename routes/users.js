@@ -1,15 +1,19 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var bodyParser = require('body-parser');
+var validator = require('express-validator');
 /* GET register page */
-router.get('/register', function(req, res, next) {
+router.get('/register', function (req, res, next) {
     res.render('register');
 });
-router.get('/login', function(req, res, next) {
+router.get('/login', function (req, res, next) {
     res.render('login');
 });
 
-router.post('/register', function(req, res, next) {
+console.log(User);
+
+router.post('/register', function (req, res, next) {
     var login = req.body.login;
     var name = req.body.name;
     var surname = req.body.surname;
@@ -17,8 +21,9 @@ router.post('/register', function(req, res, next) {
     var password = req.body.password;
     var password2 = req.body.password2;
     var teacher = req.body.teacher;
-    var role = req.body.role
+    var role = req.body.role;
 //validation
+
     req.checkBody('name', 'Name is required').notEmpty();
     req.checkBody('login', 'Login is required').notEmpty();
     req.checkBody('email', 'Email is required').notEmpty();
@@ -29,27 +34,26 @@ router.post('/register', function(req, res, next) {
     req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
     req.checkBody('role', 'Choose your role').notEmpty(req.body.role);
 
-    console.log(login,email);
-    var errors = req.validationErrors();
 
+    var errors = req.validationErrors();
     if (errors) {
         res.render('register', {errors: errors});
-        console.log(errors);}
-        else{
-
-            var newUser = new User(
+        console.log(errors);
+    }
+    else {
+        var newUser =User(
             {
                 login: login,
-                name: toString(name+" "+surname),
+                name: toString(name + " " + surname),
                 email: toString(email),
                 password: toString(password),
                 teacher: toString(teacher),
                 role: toString(role)
             });
-            console.log(newUser);
+        console.log(newUser);
         var User = User.createUser(newUser, function (err, user) {
-        console.log(user);
-         res.redirect('/')
+            console.log(user);
+            res.redirect('/')
         });
 
     }

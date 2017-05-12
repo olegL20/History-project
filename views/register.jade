@@ -10,7 +10,7 @@ block content
                 each error in errors
                     .alert.alert-danger.=error['msg']
 
-            form(method='post', action='')
+            form(method='post', action='/users/register')
                 input(type='text', name='login', placeholder='Логін')
                 input(type='text', name='name', placeholder="Ім'я")
                 input(type='text', name='surname', placeholder='Прізвище')
