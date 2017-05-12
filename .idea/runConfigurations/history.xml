@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="history" type="MongoRunConfiguration" factoryName="Mongo" editBeforeRun="true" singleton="true">
+    <setting name="path" value="C:/Windows/System32" />
+    <setting name="shellParams" value="" />
+    <method />
+  </configuration>
+</component>

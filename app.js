@@ -10,29 +10,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var http = require('http');
-
-var mysql = require('mysql');
-var connection = mysql.createConnection
-(
-    {
-        host: 'localhost',
-        user: 'root',
-        password:'',
-        database: 'mydb',
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/history-project');
+var db= mongoose.connection;
 
 
-    }
-)
-connection.connect();
 
-function keepalive() {
-    connection.query('select 1', [], function(err, result) {
-        if(err) return console.log(err);
-        // Successul keepalive
-    });
-}
-setInterval(keepalive, 6*5);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -86,8 +70,8 @@ app.use
 app.use(flash());
 
 app.use('/', index);
+/*app.use('/users', users);*/
 app.use('/users', users);
-app.use('/auth', auth);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -110,7 +94,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 app.listen(3000,function () {});
 

@@ -1,29 +1,21 @@
 /**
  * Created by olegl on 04.05.2017.
  */
-var model = require('mysql-model');
-var bcscrypt = require('bcryptjs');
+var bcrypt = require('bcryptjs');
+var  mongoose = require('mongoose');
 
-var AppModel = model.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password:'',
-    database:'mydb'
+
+var UserSchema = mongoose.Schema({ login:{type:String}, name: { type: String }, password: {type: String }, email: {type: String }, teacher: {type: String }, role: {type:String}
 });
 
-var User = module.exports = new AppModel.extend({
-    tableName: 'User'
-})
-module.exports.createUser= function(newUser,callback)
-{
-
-    const saltRounds = 10;
-    const myPlaintextPassword = 's0/\/\P4$$w0rD';
-    const someOtherPlaintextPassword = 'not_bacon';
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(newUser.fieldName('password'), salt, function(err, hash) {
-            // Store hash in your password DB.
-        });
-    });
+var User = module.exports = mongoose.model('User',UserSchema);
+module.exports.createUser = function (newUser,callback){
+    bcrypt.getSalt(10,function (err,salt) {
+        bcrypt.hash(newUser.password,salt,function (err, hash){
+            if(err) throw err;
+                newUser.password = toString(hash);
+                newUser.save(callback);
+            }
+        );
+    })
 }
-    
