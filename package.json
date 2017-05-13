@@ -9,6 +9,7 @@
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "~1.17.1",
+    "co": "^4.6.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "cookie-session": "^2.0.0-beta.1",
@@ -21,6 +22,9 @@
     "jade": "~1.11.0",
     "jake": "^8.0.15",
     "lodash": "^4.17.4",
+    "mongodb": "^3.2.26",
+    "mongoose": "^4.9.8",
+    "mongorito": "^2.2.0",
     "morgan": "~1.8.1",
     "mysql": "^2.13.0",
     "mysql-model": "0.0.2",
@@ -29,12 +33,12 @@
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
     "password": "^0.1.1",
-    "sequelize": "^3.30.4",
-    "serve-favicon": "~2.4.2",
-    "validate-password": "^1.0.4",
     "scripts": {
       "dev": "nodemon server.js"
-    }
+    },
+    "sequelize": "^3.30.4",
+    "serve-favicon": "~2.4.2",
+    "validate-password": "^1.0.4"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

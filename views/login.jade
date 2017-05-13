@@ -1,13 +1,46 @@
 extends layout
-
-.container
 block content
-    h2.page-header Account Login
-    form(method='post', action='/users/login')
-        .form-group
-            label Username
-            input.form-control(type='text', name='username', placeholder='Username')
-        .form-group
-            label Password
-            input.form-control(type='password', name='password', placeholder='Password')
-        button.btn.btn-default(type='submit') Submit
+            .container.center
+                .form.animated.fadeInUpBig
+                    h1 Авторизацiя
+                    p
+                        | Щоб почати квест увійдіть або
+                        a(href='/users/register') зареєструйтесь
+                    form
+                        input(type='text', name='login', placeholder='Логін')
+                        input(type='text', name='password', placeholder='Пароль')
+                        select(name='role')
+                            option(value='Учень')
+                                img(src='/images/logo.png')
+                                | Учень
+                            option(value='Вчитель') Вчитель
+                            option(value='Адмін') Адміністратор
+                        button.main-btn(type='submit') Вхiд
+                    p Авторизація через соцмережі
+                    .soc-login
+                        a(href='#')
+                            i.fa.fa-google-plus(aria-hidden='true')
+                        a(href='#')
+                            i.fa.fa-facebook-square(aria-hidden='true')
+                        a(href='#')
+                            i.fa.fa-vk(aria-hidden='true')
+                        a(href='#')
+                            i.fa.fa-telegram(aria-hidden='true')
+            // Шаги
+            .step
+                .step-smt
+                    p.step-text Вхід
+                    p
+                        span.circle-1.wow.rubberBand(data-wow-delay='0.5s')
+                            span.circle-2
+                .step-smt
+                    p
+                        span.circle-2
+                .step-smt
+                    p
+                        span.circle-2
+            // Футер
+            .footer
+                p
+                    a(href='#') Зворотній зв'язок
+                    a(href='#') Поділитися ресурсом

@@ -1,0 +1,257 @@
+   @font-face {
+    font-family: "Plainot"; /* Имя шрифта */
+    src: url(fonts/10213.ttf); /* Путь к файлу со шрифтом */
+   }
+@-webkit-keyframes animatedBackground {
+  from { background: url("img/cover-2.png")  fixed;
+
+  background-repeat: no-repeat; 
+background-size: cover;}
+  to { background: url("img/cover.png") fixed; 
+background-repeat: no-repeat;
+background-size: cover;}
+}
+body {
+	font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  background-size: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  -webkit-animation: animatedBackground 2s linear infinite;
+       -webkit-transition: all 1s ease 0.5s;
+     -moz-transition: all 1s ease 0.5s;
+     -o-transition: all 1s ease 0.5s;
+     transition: all 1s ease 0.5s;
+
+}
+
+
+
+.center {
+text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+
+}
+/*Шапка*/
+.header {
+	width:100%;
+	height:90px;
+}
+
+.header img {
+	height:100%;
+	float:left;
+}
+
+.top {
+	position: absolute;
+	top:0;
+	padding-top:20px;
+}
+.top-panel {
+	float:right;
+	margin-top: 45px;
+}
+
+.top-panel p {
+	color:#fff;
+	float:left;
+	font-size: 15px;
+    margin: 0 5px;
+}
+
+.top-panel a {
+	color:#fff;
+}
+
+.top-panel i {
+	font-size: 20px;
+}
+
+.top-panel a:hover {
+	color:#fff;
+	text-decoration: none;
+}
+
+/*Форма*/
+.form {
+	width: 350px;
+	display: inline-block;
+	background: #fff;
+	border-radius: 5px;
+	text-align: center;
+	padding: 25px 10px;
+}
+
+h1 {
+	color: rgb(26,131,197);
+	font-family: "Plainot";
+}
+
+.form p {
+	font-size: 14px;
+	color: rgb(139,139,139);
+}
+
+.form p a {
+	color: rgb(26,131,197);
+	text-decoration: underline;
+}
+
+.form p a:hover {
+	color: rgb(26,131,197);
+	text-decoration: underline;
+}
+
+.form input {
+	width:90%;
+	text-align: center;
+	border:none;
+	border-bottom: 1px solid #d0d0d0;
+	margin-top: 20px;
+	font-size: 15px;
+}
+
+.form select {
+	width:50%;
+	text-align: center;
+	border:none;
+	border-bottom: 1px solid #d0d0d0;
+	margin-top: 20px;
+	font-size: 15px;
+	color:#d0d0d0;
+
+}
+
+.main-btn {
+	background: rgb(26,131,197);
+	color: #fff;
+	border-radius: 5px;
+	font-family: "Plainot";
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width:120px;
+	padding: 3px 0;
+	box-shadow: none;
+	border: none;
+	text-align: center;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.main-btn:hover {
+	background: rgb(18,72,108);
+	color: #fff;
+	transition: all 0.5s;
+}
+
+.soc-login {
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+.soc-login a {
+	float:left;
+	color: #d0d0d0;
+	margin:0 3px;
+}
+
+.soc-login a:hover {
+	float:left;
+	color: rgb(26,131,197);
+	transition: all 0.5s;
+}
+
+.soc-login a i {
+	font-size: 20px;
+}
+
+::-webkit-input-placeholder {color:#d0d0d0;}
+::-moz-placeholder          {color:#d0d0d0;}
+:-moz-placeholder           {color:#d0d0d0;}
+:-ms-input-placeholder      {color:#d0d0d0;}
+
+/*Шаги*/
+.step {
+	display: inline-block;
+	position: absolute;
+	right: 9%;
+	text-align: right;
+	color:#fff;
+}
+
+.step-smt {
+	min-height: 20px;
+	display: block;
+    clear: both;
+    float:right;
+}
+
+.step-smt p {
+    margin: 0 3px;
+    position: relative;
+    right: 0;
+}
+
+.circle-1 {
+	padding: 5px 5px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: rgba(255,255,255,0.7);
+}
+.circle-2 {
+	margin-right: 5px;
+    margin-top: 10px;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgb(255,255,255);
+}
+
+.circle-1 .circle-2 {
+	margin-top: 0px;
+}
+
+.step-text {
+	float: left;
+    position: relative;
+    right: 25px!important;
+    top: 20px;
+}
+
+/*Футер*/
+.footer {
+	position: absolute;
+	bottom:0;
+	width:100%;
+	text-align: center;
+	background: rgb(18,72,108);
+	color: rgb(29,132,198);
+	display: block;
+}
+
+.footer p {
+	margin-bottom:0;
+	padding:5px;
+	font-size:13px;
+}
+
+.footer a {
+	color: rgb(29,132,198);
+}
+
