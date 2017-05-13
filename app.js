@@ -1,28 +1,29 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var exphbs = require('express-handlebars');
-var session = require('express-session');
-var validator = require('express-validator');
-var flash = require('connect-flash');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var mongo = require('mongodb');
-var mongoose = require('mongoose');
+let express = require('express');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let exphbs = require('express-handlebars');
+let session = require('express-session');
+let validator = require('express-validator');
+let flash = require('connect-flash');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let passport = require('passport');
+let LocalStrategy = require('passport-local').Strategy;
+let mongo = require('mongodb');
+let mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/history-project');
-var db= mongoose.connection;
+let db= mongoose.connection;
+let mongorito = require('mongorito');
+let model = mongorito.Model;
+mongorito.connect('localhost/history-project');
 
 
+let index = require('./routes/index');
+let users = require('./routes/users');
+let auth = require('./routes/auth');
 
-
-var index = require('./routes/index');
-var users = require('./routes/users');
-var auth = require('./routes/auth');
-
-var app = express();
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,7 +54,7 @@ app.use
         {
             errorFormatter: function(param,msg,value)
             {
-                var namespace = param.split('.'),
+                let namespace = param.split('.'),
                     root = namespace.shift(),
                     formParam = root;
                 while (namespace.length)
@@ -74,7 +75,7 @@ app.use('/', index);
 app.use('/users', users);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

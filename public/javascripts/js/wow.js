@@ -1,13 +1,13 @@
 (function() {
-  var MutationObserver, Util, WeakMap, getComputedStyle, getComputedStyleRX,
+  let MutationObserver, Util, WeakMap, getComputedStyle, getComputedStyleRX,
     bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+    indexOf = [].indexOf || function(item) { for (let i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   Util = (function() {
     function Util() {}
 
     Util.prototype.extend = function(custom, defaults) {
-      var key, value;
+      let key, value;
       for (key in defaults) {
         value = defaults[key];
         if (custom[key] == null) {
@@ -22,7 +22,7 @@
     };
 
     Util.prototype.createEvent = function(event, bubble, cancel, detail) {
-      var customEvent;
+      let customEvent;
       if (bubble == null) {
         bubble = false;
       }
@@ -93,7 +93,7 @@
     }
 
     WeakMap.prototype.get = function(key) {
-      var i, item, j, len, ref;
+      let i, item, j, len, ref;
       ref = this.keys;
       for (i = j = 0, len = ref.length; j < len; i = ++j) {
         item = ref[i];
@@ -104,7 +104,7 @@
     };
 
     WeakMap.prototype.set = function(key, value) {
-      var i, item, j, len, ref;
+      let i, item, j, len, ref;
       ref = this.keys;
       for (i = j = 0, len = ref.length; j < len; i = ++j) {
         item = ref[i];
@@ -141,7 +141,7 @@
 
   getComputedStyle = this.getComputedStyle || function(el, pseudo) {
     this.getPropertyValue = function(prop) {
-      var ref;
+      let ref;
       if (prop === 'float') {
         prop = 'styleFloat';
       }
@@ -186,7 +186,7 @@
     }
 
     WOW.prototype.init = function() {
-      var ref;
+      let ref;
       this.element = window.document.documentElement;
       if ((ref = document.readyState) === "interactive" || ref === "complete") {
         this.start();
@@ -197,10 +197,10 @@
     };
 
     WOW.prototype.start = function() {
-      var box, j, len, ref;
+      let box, j, len, ref;
       this.stopped = false;
       this.boxes = (function() {
-        var j, len, ref, results;
+        let j, len, ref, results;
         ref = this.element.querySelectorAll("." + this.config.boxClass);
         results = [];
         for (j = 0, len = ref.length; j < len; j++) {
@@ -210,7 +210,7 @@
         return results;
       }).call(this);
       this.all = (function() {
-        var j, len, ref, results;
+        let j, len, ref, results;
         ref = this.boxes;
         results = [];
         for (j = 0, len = ref.length; j < len; j++) {
@@ -238,12 +238,12 @@
       if (this.config.live) {
         return new MutationObserver((function(_this) {
           return function(records) {
-            var k, len1, node, record, results;
+            let k, len1, node, record, results;
             results = [];
             for (k = 0, len1 = records.length; k < len1; k++) {
               record = records[k];
               results.push((function() {
-                var l, len2, ref1, results1;
+                let l, len2, ref1, results1;
                 ref1 = record.addedNodes || [];
                 results1 = [];
                 for (l = 0, len2 = ref1.length; l < len2; l++) {
@@ -278,7 +278,7 @@
     };
 
     WOW.prototype.doSync = function(element) {
-      var box, j, len, ref, results;
+      let box, j, len, ref, results;
       if (element == null) {
         element = this.element;
       }
@@ -321,7 +321,7 @@
     };
 
     WOW.prototype.applyStyle = function(box, hidden) {
-      var delay, duration, iteration;
+      let delay, duration, iteration;
       duration = box.getAttribute('data-wow-duration');
       delay = box.getAttribute('data-wow-delay');
       iteration = box.getAttribute('data-wow-iteration');
@@ -345,7 +345,7 @@
     })();
 
     WOW.prototype.resetStyle = function() {
-      var box, j, len, ref, results;
+      let box, j, len, ref, results;
       ref = this.boxes;
       results = [];
       for (j = 0, len = ref.length; j < len; j++) {
@@ -356,7 +356,7 @@
     };
 
     WOW.prototype.resetAnimation = function(event) {
-      var target;
+      let target;
       if (event.type.toLowerCase().indexOf('animationend') >= 0) {
         target = event.target || event.srcElement;
         return target.className = target.className.replace(this.config.animateClass, '').trim();
@@ -392,13 +392,13 @@
     WOW.prototype.vendors = ["moz", "webkit"];
 
     WOW.prototype.vendorSet = function(elem, properties) {
-      var name, results, value, vendor;
+      let name, results, value, vendor;
       results = [];
       for (name in properties) {
         value = properties[name];
         elem["" + name] = value;
         results.push((function() {
-          var j, len, ref, results1;
+          let j, len, ref, results1;
           ref = this.vendors;
           results1 = [];
           for (j = 0, len = ref.length; j < len; j++) {
@@ -412,7 +412,7 @@
     };
 
     WOW.prototype.vendorCSS = function(elem, property) {
-      var j, len, ref, result, style, vendor;
+      let j, len, ref, result, style, vendor;
       style = getComputedStyle(elem);
       result = style.getPropertyCSSValue(property);
       ref = this.vendors;
@@ -424,7 +424,7 @@
     };
 
     WOW.prototype.animationName = function(box) {
-      var animationName, error;
+      let animationName, error;
       try {
         animationName = this.vendorCSS(box, 'animation-name').cssText;
       } catch (error) {
@@ -450,11 +450,11 @@
     };
 
     WOW.prototype.scrollCallback = function() {
-      var box;
+      let box;
       if (this.scrolled) {
         this.scrolled = false;
         this.boxes = (function() {
-          var j, len, ref, results;
+          let j, len, ref, results;
           ref = this.boxes;
           results = [];
           for (j = 0, len = ref.length; j < len; j++) {
@@ -477,7 +477,7 @@
     };
 
     WOW.prototype.offsetTop = function(element) {
-      var top;
+      let top;
       while (element.offsetTop === void 0) {
         element = element.parentNode;
       }
@@ -489,7 +489,7 @@
     };
 
     WOW.prototype.isVisible = function(box) {
-      var bottom, offset, top, viewBottom, viewTop;
+      let bottom, offset, top, viewBottom, viewTop;
       offset = box.getAttribute('data-wow-offset') || this.config.offset;
       viewTop = (this.config.scrollContainer && this.config.scrollContainer.scrollTop) || window.pageYOffset;
       viewBottom = viewTop + Math.min(this.element.clientHeight, this.util().innerHeight()) - offset;
