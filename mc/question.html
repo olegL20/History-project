@@ -1,0 +1,135 @@
+<html ><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Квест - Моя країна</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="style/bootstrap.min.css" rel="stylesheet">
+<link href="style/animate.css" rel="stylesheet">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js"></script>
+<script src="js/wow.js"></script>
+<script>new WOW().init();</script>
+<!-- <script type="text/javascript" src="http://scriptjava.net/source/scriptjava/scriptjava.js"></script> -->
+<link href="style/style.css" rel="stylesheet">
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<link rel="stylesheet" href="style/jquery.mCustomScrollbar.css">
+</head>
+
+<body>
+<div class="wrapper">
+<!-- Шапка -->
+<div class="container top">
+<div class="header">
+<img src="images/logo.png">
+<div class="top-panel-log"> 
+<p>Вітаємо, <a href="#">Марина Іваненко</a></p><br>
+<button class="main-btn mrg-non" type="submit">Особистий кабiнет</button>
+
+</div>
+</div>
+</div>
+<div class="top-right">
+	<p>Час: <b>1:30</b></p>
+	<p>Бали: <b>1:30</b></p>
+	<p><b>1/ 11</b></p>
+</div>
+<!-- Форма -->
+<div class="container">
+<div class="col-sm-8 fl-l mrg-t">
+	<div class="quest">
+	<h1 class="title-quest">Завдання 1</h1>	
+	<p class="comment-numb">Коментарі(2)</p>
+	<p class="question-text">Під чиїм керівництвом військо запорізьке вступило в польсько-шведську війну?</p>
+	<div class="col-sm-12 mrg-b">
+		<div class="col-sm-4 fl-l"> <p class="img-answer"><img src="images/krut.jpg"></p>
+		<p><input type="radio" name="answer" value="krut">Г.Крутневич</p></div>
+		<div class="col-sm-4 fl-l"><p class="img-answer"><img src="images/sag.jpg"></p>
+		<p><input type="radio" name="answer" value="sag">П.Сагайдачний</p></div>
+		<div class="col-sm-4 fl-l"><p class="img-answer"><img src="images/kishka.jpg"></p>
+		<p><input type="radio" name="answer" value="kishka">С.Кішка</p></div>
+	</div>
+	<div class="panel-control">
+	<button class="green-btn">Вiдповiсти <i class="fa fa-check" aria-hidden="true"></i></button>
+	<p class="plus-info">Довiдка (-50б)<i class="fa fa-info-circle" aria-hidden="true"></i></p>
+	<a href="#"><p class="next-quest">Пропустити <i class="fa fa-step-forward" aria-hidden="true"></i></p></a>
+	</div>
+	</div>
+	<div class="no-comment">Після відповіді Вам відкриються коментарі та можливість оцінити питання</div>
+</div>
+<div class="col-sm-4 fl-l right">
+<button class="white-btn">Чат</button><br>
+<p class="white-text">Час</p>
+<p class="value"><i class="fa fa-clock-o" aria-hidden="true"></i>1:30</p>
+<p class="white-text">Бали</p>
+<p class="value"><i class="fa fa-star-o" aria-hidden="true"></i>100</p>
+<p class="white-text">Завдання</p>
+<p class="value">1/ 11</p>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+    <span class="sr-only">10% Complete</span>
+  </div>
+</div>
+<p class="white-text">Точки на карті:</p>
+<ul>
+	<li class="value active-r"><a href="#">На карті</a><i class="fa fa-caret-right" aria-hidden="true"></i>Запорізька Січ</li>
+	<li class="value">Жовті Води</li>
+	<li class="value">Швеція</li>
+	<li class="value">Полтава</li>
+	<li class="value">Київ</li>
+	<li class="value">Константинополь</li>
+	<li class="value">Запорізька Січ</li>
+</ul>
+</div>
+</div>
+
+
+
+
+<!-- Футер -->
+<div class="footer">
+	<p><a href="#">Зворотній зв'язок</a> | <a href="#">Поділитися ресурсом</a></p>	
+</div>
+
+<!-- HTML-код модального окна -->
+<div id="myModalBox" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Заголовок модального окна -->
+      <div class="modal-header">
+       
+        <h1 class="modal-h1">Iсторична довiдка</h1>
+         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <!-- Основное содержимое модального окна -->
+      <div class="modal-body">
+        <p class="quest-number"><b>Завдання 1</b></p>
+        <p> На початку 1601 року король Речі Посполитої Сигізмунд III Ваза оголосив про приєднання до Речі Посполитої Естонії, котра до цього належала Швеції. На заклик короля відгукнулись запорозькі козаки, що протягом 1601—1602 р. брали участь у воєнних діях польсько-шведської війни. Серед інших козаків — П.Сагайдачний, який був під керівництвом спершу Самійла Кішки, з початку 1602-го Гаврила Крутневича.  </p>
+      </div>
+      <!-- Футер модального окна -->
+      <div class="modal-footer">
+        <button type="button" class="main-btn" data-dismiss="modal">Виконати завдання</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- Скрипт, вызывающий модальное окно после загрузки страницы -->
+<script>
+  $(document).ready(function() {
+    $("#myModalBox").modal('show');
+  });
+</script>
+<script>
+(function($){
+$(window).load(function(){
+ 
+$("#info").mCustomScrollbar({
+theme:"inset"
+});
+ 
+});
+})(jQuery);
+</script>
+</body>
+</html>
