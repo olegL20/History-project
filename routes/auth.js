@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let User = require('../models/user');
+
 /* GET register page */
 router.get('/register', function(req, res, next) {
     res.render('register');
