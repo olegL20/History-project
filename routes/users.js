@@ -1,32 +1,28 @@
-let express = require('express');
-let router = express.Router();
-let bodyParser = require('body-parser');
-let validator = require('express-validator');
-let mongorito = require('mongorito');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const validator = require('express-validator');
 const flash= require('connect-flash');
-let Model = mongorito.Model;
-const User = module.exports = Model.extend({collection:'users'});
-const passport = require('passport')
-const passport_local = require('passport-local')
-    , LocalStrategy = require('passport-local').Strategy;
-
+const passport = require('passport');
+const passport_local = require('passport-local');
+const mongoose = require('mongoose');
 const crypto = require('crypto');
+
+mongoose.Promise = global.Promise;
+let LocalStrategy = require('passport-local').Strategy;
 
 
 /* GET register page */
 
-router.get('/register', function (req, res, next) {
+router.get('/register',function (req, res, next) {
     res.render('register');
 });
 router.get('/login', function (req, res, next) {
     res.render('login');
 });
-
-
 function md5(string) {
     return crypto.createHash('md5').update(string).digest('hex');
 }
-
 router.post('/register', function (req, res, next) {
     let login = req.body.login;
     let name = req.body.name;
@@ -57,48 +53,37 @@ router.post('/register', function (req, res, next) {
     else {
         let pass;
         pass = md5(password);
-        let user = new User({
-                login: login,
-                name: name + " " + surname,
-                email: email,
-                password: pass,
-                teacher: teacher,
-                role: role
-            });
-     console.log(user);
-
-
-
-       // req.flash('success_msg','Вы успішно зареєструвались!! Введіть логін аба email та пароль')
-        res.redirect('/users/login');
-    }
-
-
-});
-
-passport.use(new LocalStrategy(
-    function(email, password, done) {
-        User.get({email: req.body.email},function (err,user) {
-            if(err) throw err;
-            if(!user) return done( null , false, {message: "unknown user"});
+        let user = new users({
+            login: login,
+            name: name + " " + surname,
+            email: email,
+            password: pass,
+            teacher: teacher,
+            role: role
         });
-        User.get({password:md5(user.password),function (err, isMatch) {
-            if (err) throw err;
-            if (isMatch) return done(null, user);
-            else return done(null, false, {message: "do not match"})
-        }})
+        user.save();
 
-        }));
-passport.serializeUser(function (user,done) {
-    done(null,user.get('_id'));
-    
-});
-passport.deserializeUser(function (id,done) {
-    User.get({_id: id,function (err,user) {
-        done(err, user);
-    }})});
+
+        passport.serializeUser(function (user, done) {
+            done(null, user._id);
+
+        });
+        passport.deserializeUser(function (id, done) {
+            User.findById(id, function (err, user) {
+                done(err, user._id);
+            })
+        });
+    }});
+
 router.post('/login',passport.authenticate('local',{successRedirect:'/',failureRedirect:'users/login',
 function(req,res){
+    email = req.body.email;
+    password = req.body.password;
+
+    req.checkBody('email', 'Email is required').notEmpty();
+    req.checkBody('email', 'Email not valid').isEmail();
+    req.checkBody('password', 'Password is required').notEmpty();
+    req.checkBody('password', 'Password is required').equals(users.find({password: password}));
     res.redirect('/')
 }}));
 module.exports = router;
