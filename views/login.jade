@@ -6,9 +6,11 @@ block content
                     p
                         | Щоб почати квест увійдіть або
                         a(href='/users/register') зареєструйтесь
-                    form
-                        input(type='text', name='login', placeholder='Логін')
-                        input(type='text', name='password', placeholder='Пароль')
+                    if(success)
+                        .alert-success=success_msg
+                    form(method='post', action='/users/login')
+                        input(type='email', name='email', placeholder='Логін')
+                        input(type='password', name='password', placeholder='Пароль')
                         select(name='role')
                             option(value='Учень')
                                 img(src='/images/logo.png')
