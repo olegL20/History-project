@@ -36,6 +36,13 @@ app.get('/users/google/callback',
         {successRedirect: '/',
             failureRedirect: '/users/login'
         }));
+app.get('/users/twitter',passport.authenticate('twitter'));
+app.get('/users/twitter/callback',
+    passport.authenticate('twitter',
+        {successRedirect: '/',
+            failureRedirect: '/users/login'
+        }));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

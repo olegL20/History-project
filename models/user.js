@@ -27,7 +27,14 @@ let UserSchema = new Schema({
             token: String,
             email: String,
 
-        }
+        },
+    twitte:{
+        username:String,
+        id:String,
+        token:String,
+        email:String
+    }
+
 
 
 },{collection:'user'});

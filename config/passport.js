@@ -4,6 +4,7 @@
 let LocalStrategy = require('passport-local').Strategy;
 let FacebookStrategy  = require('passport-facebook').Strategy;
 let GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+let TwitterStrategy = require('passport-twitter').Strategy;
 let bodyParser = require('body-parser');
 const configureAuth = require('./auth');
 const mongoose = require('mongoose');
@@ -103,7 +104,33 @@ passport.use(new GoogleStrategy({
 
     ));
 
+    passport.use(new TwitterStrategy({
+            consumerKey: configureAuth.twitterAuth.consumerKey,
+            consumerSecret: configureAuth.twitterAuth.consumerSecret,
+            callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
+        },
+        function(token, tokenSecret, profile, cb) {
+            User.findOrCreate({ twitterId: profile.id },  function (accessToken, refreshToken,profile,done) {
+                    process.nextTick(function () {
+                        User.findOne({'twitter.id':profile.id},function (err,user) {
+                            if(err) return done(err);
+                            if(user) {return done(null, user)}
+                            else {
+                                console.log(profile);
+                                newUser = new User();
+                                newUser.twitter.id = profile.id;
+                                newUser.twitter.token = accessToken;
+                                newUser.twitter.username = profile.displayName;
+                                newUser.twitter.email = profile.emails[0].value;
+                                newUser.save();
 
+                            }
+                        })
+                    })
+                }
+
+
+            )}));
 
 
 };
