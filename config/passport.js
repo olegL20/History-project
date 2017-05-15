@@ -5,6 +5,7 @@ let LocalStrategy = require('passport-local').Strategy;
 let FacebookStrategy  = require('passport-facebook').Strategy;
 let GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 let TwitterStrategy = require('passport-twitter').Strategy;
+let VkStrategy = require('passport-vkontakte').Strategy;
 let bodyParser = require('body-parser');
 const configureAuth = require('./auth');
 const mongoose = require('mongoose');
@@ -84,7 +85,7 @@ passport.use(new GoogleStrategy({
     callbackURL:configureAuth.googleAuth.callbackURL},
     function (accessToken, refreshToken,profile,done) {
         process.nextTick(function () {
-            User.findOne({'google.id':profile.id},function (err,user) {
+            User.findOrCreate({'google.id':profile.id},function (err,user) {
                 if(err) return done(err);
                 if(user) {return done(null, user)}
                 else {
@@ -107,10 +108,10 @@ passport.use(new GoogleStrategy({
     passport.use(new TwitterStrategy({
             consumerKey: configureAuth.twitterAuth.consumerKey,
             consumerSecret: configureAuth.twitterAuth.consumerSecret,
-            callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
+            callbackURL: configureAuth.twitterAuth.callbackURL,
         },
         function(token, tokenSecret, profile, cb) {
-            User.findOrCreate({ twitterId: profile.id },  function (accessToken, refreshToken,profile,done) {
+            User.findOrCreate({ 'twitter.Id': profile.id },  function (accessToken, refreshToken,profile,done) {
                     process.nextTick(function () {
                         User.findOne({'twitter.id':profile.id},function (err,user) {
                             if(err) return done(err);
@@ -122,6 +123,33 @@ passport.use(new GoogleStrategy({
                                 newUser.twitter.token = accessToken;
                                 newUser.twitter.username = profile.displayName;
                                 newUser.twitter.email = profile.emails[0].value;
+                                newUser.save();
+
+                            }
+                        })
+                    })
+                }
+
+
+            )}));
+    passport.use(new VkStrategy({
+            clientID: configureAuth.VkontakteAuth.clientID,
+            clientSecret: configureAuth.VkontakteAuth.clientSecret,
+            callbackURL: configureAuth.VkontakteAuth.callbackURL
+        },
+        function(token, tokenSecret, profile, cb) {
+            User.findOrCreate({ 'vkontakte.Id': profile.id },  function (accessToken, refreshToken,profile,done) {
+                    process.nextTick(function () {
+                        User.findOne({'vkontakte.id':profile.id},function (err,user) {
+                            if(err) return done(err);
+                            if(user) {return done(null, user)}
+                            else {
+                                console.log(profile);
+                                newUser = new User();
+                                newUser.vkontakte.id = profile.id;
+                                newUser.vkontakte.token = accessToken;
+                                newUser.vkontakte.username = profile.displayName;
+                                newUser.vkontakte.email = profile.emails[0].value;
                                 newUser.save();
 
                             }

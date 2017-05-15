@@ -33,6 +33,12 @@ let UserSchema = new Schema({
         id:String,
         token:String,
         email:String
+    },
+    vkontakte:{
+        username:String,
+        id:String,
+        token:String,
+        email:String
     }
 
 

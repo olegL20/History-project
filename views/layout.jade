@@ -19,6 +19,16 @@ html
             // Шапка
             .container.top
                 .header
+                    if(isAuthenticated)
+                       img(src='images/logo.png')
+                       .top-panel-log
+                                        p
+                                            | Вітаємо,
+                                            a(href='#') Марина Іваненко
+                                        br
+                                        button.white-btn.mrg-non(type='submit') Пройти квест
+
+                   if(!isAuthenticated)
                     img(src='../images/logo.png')
                     .top-panel
                         p

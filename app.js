@@ -42,6 +42,12 @@ app.get('/users/twitter/callback',
         {successRedirect: '/',
             failureRedirect: '/users/login'
         }));
+app.get('/users/vkontakte',passport.authenticate('vkontakte'));
+app.get('/users/vkontakte/callback',
+    passport.authenticate('vkontakte',
+        {successRedirect: '/',
+            failureRedirect: '/users/login'
+        }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

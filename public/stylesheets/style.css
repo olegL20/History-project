@@ -14,9 +14,10 @@ background-size: cover;}
 body {
 	font-size: 15px;
   font-family: "Roboto", sans-serif;
+  background: url("../images/cover.png")  fixed;
   height: 100vh;
   background-size: cover;
-  overflow: hidden;
+
   background-repeat: no-repeat;
   -webkit-animation: animatedBackground 2s linear infinite;
        -webkit-transition: all 1s ease 0.5s;
@@ -24,6 +25,11 @@ body {
      -o-transition: all 1s ease 0.5s;
      transition: all 1s ease 0.5s;
 
+}
+
+
+html, body{
+height: 100%;
 }
 
 
@@ -62,6 +68,18 @@ text-align: center;
 	margin-top: 45px;
 }
 
+.top-panel-log {
+	float:right;
+	margin-top: 20px;
+}
+
+.top-panel-log p {
+	color:#fff;
+	float:left;
+	font-size: 15px;
+    margin: 0 5px;
+}
+
 .top-panel p {
 	color:#fff;
 	float:left;
@@ -80,6 +98,12 @@ text-align: center;
 .top-panel a:hover {
 	color:#fff;
 	text-decoration: none;
+}
+
+.mrg-non {
+	margin-top:0!important;
+	margin-right: 0!important;
+	width: 200px!important;
 }
 
 /*Форма*/
@@ -187,7 +211,7 @@ h1 {
 .step {
 	display: inline-block;
 	position: absolute;
-	right: 9%;
+	right: 3%;
 	text-align: right;
 	color:#fff;
 }
@@ -200,6 +224,7 @@ h1 {
 }
 
 .step-smt p {
+	font-size: 13px;
     margin: 0 3px;
     position: relative;
     right: 0;
@@ -234,6 +259,350 @@ h1 {
     top: 20px;
 }
 
+.step-2 {
+	margin-top: -10px;
+}
+
+/*О проект (Информатизация)*/
+
+.info {
+	width: 85%;
+	height:70vh;
+	margin-top: 45px;
+	overflow: auto;
+	display: inline-block;
+	background: #fff;
+	border-radius: 5px;
+	text-align: center;
+	padding: 40px 10px;
+	padding-left: 30px;
+}
+
+.next-p {
+	color: rgb(26,131,197)!important;
+	font-family: "Plainot";
+}
+
+.info a:hover {
+	text-decoration: none;
+}
+
+.info h1 {
+	color: rgb(139,139,139);
+}
+
+.info-text {
+	font-size: 15px;
+	text-align: left;
+	text-indent: 30px;
+	color: rgb(139,139,139);
+}
+
+.main-text {
+	text-align: left;
+	text-indent: 30px;
+	color: rgb(139,139,139);
+    background: rgb(255, 253, 182);
+	font-weight: bold;
+	border-radius:5px;
+	padding:10px;
+}
+
+.bulb {
+	text-align:center;
+	font-size: 16px;
+	font-weight: bold;
+	color: rgb(26,131,197);
+	font-family: "Plainot";
+}
+
+.bulb i {
+	margin-right: 10px;
+	font-size: 20px;
+}
+
+.img-info {
+	width: 65%;
+	height:auto;
+}
+
+.img-text {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	width: 65%;
+	color: rgb(139,139,139);
+	font-size: 13px;
+	text-align: center;
+}
+
+/*Правила*/
+
+.rules-container {
+	padding-right: 0;
+	padding-left: 0
+}
+
+.nav-rules {
+	border-top:2px solid rgb(26,131,197);
+	margin-top: 40px;
+    margin-bottom: 15px;
+
+}
+
+.circle-11 {
+	padding: 5px 5px;
+	display: inline-block;
+	margin-right: 5px;
+	margin-left: 5px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: rgb(26,131,197);
+}
+
+.circle-22 {
+	margin-right: 5px;
+    margin-top: 0px;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgb(255,255,255);
+}
+
+.nav-tabs {
+	text-align: center;
+    border-bottom: none;
+    width: 120px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.nav-tabs li {
+	margin-top: -12px;
+}
+
+.title-rules {
+	margin-bottom: 0;
+	font-size: 18px!important;
+	font-family: "Plainot";
+}
+
+/*Модалка*/
+.quest-number {
+	text-align: center;
+}
+
+.modal-h1 {
+	margin-top:15px;
+	width: 100%;
+    text-align: center;
+}
+
+.modal-body p {
+	color: rgb(139,139,139);
+}
+
+
+/*Квест*/
+
+.quest {
+	width: 100%;
+	height:60vh;
+	margin-top: 45px;
+	overflow: auto;
+	display: inline-block;
+	background: #fff;
+	border-radius: 5px;
+	text-align: center;
+	padding: 40px 10px;
+	padding-left: 30px;
+}
+
+.title-quest {
+	width: 100%;
+	text-align: left;
+}
+
+.comment-numb {
+	font-size: 13px;
+	color: rgb(145,145,145);
+	text-align: left;
+}
+
+.question-text {
+	font-weight: bold;
+	color: rgb(139,139,139);
+	text-align: left;
+}
+
+.img-answer {
+	text-align: center;
+	width:100px;
+	height:100px;
+	border-radius: 50%;
+	overflow:hidden;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.img-answer img {
+	width: 100%
+}
+
+.fl-l {
+	float: left;
+}
+
+.green-btn {
+	margin-top: 15px;
+	background: rgb(159,191,45);
+	color: #fff;
+	border-radius: 5px;
+	font-family: "Plainot";
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width:120px;
+	padding: 3px 0;
+	box-shadow: none;
+	border: none;
+	text-align: center;
+	cursor: pointer;
+	float:left;
+}
+
+.plus-info {
+	margin-top: 15px;
+	color: rgb(26,131,197);
+	font-family: "Plainot";
+	float:left;
+	margin-left: 15px;
+}
+
+.plus-info i {
+	margin-left: 3px;
+}
+
+.next-quest {
+	margin-top: 15px;
+	color: rgb(139,139,139)!important;
+	font-family: "Plainot";
+	float: left;
+	margin-left: 15px;
+}
+
+.panel-control {
+	margin-top: 20px;
+
+}
+
+.mrg-b {
+	margin-bottom:15px;
+}
+
+
+/*Нету комментов*/
+.no-comment {
+	background:rgb(223,223,223);
+	color:rgb(139,139,139);
+	border-radius: 5px;
+	margin-top: 10px;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+}
+
+/*Правая колонка в квесте*/
+
+.right {
+	text-align: right;
+	margin-top: 40px;
+}
+
+.white-btn {
+	margin-top: 15px;
+	background: #fff;
+	color: rgb(26,131,197);
+	border-radius: 5px;
+	font-family: "Plainot";
+	display: inline-block;
+	width:70px;
+	padding: 3px 0;
+	box-shadow: none;
+	border: none;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+
+.white-text {
+	margin-top:15px;
+	color:#fff;
+	text-align:right;
+	margin-bottom: 0;
+
+}
+
+.value {
+	margin:0;
+	font-weight: bold;
+	color:#fff;
+	text-align:right;
+	cursor: pointer;
+}
+
+.value i {
+	margin-right: 3px;
+}
+
+.active-r {
+	color: #fbd303;
+
+}
+
+.active-r a {
+	text-decoration: underline;
+	color: #fff;
+	font-size: 13px;
+	margin-right: 5px;
+}
+
+ul {
+	list-style: none;
+}
+
+.progress-bar {
+    height: 0.5rem;
+    background-color: #fbd303;
+}
+
+/*Результаты*/
+.full {
+	width: 100%;
+
+}
+.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+.tftable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+.tftable tr {background-color:#ffffff;}
+.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+.tftable tr:hover {background-color:#ffff99;}
+
+.blue {
+	color: rgb(26,131,197)!important;
+}
+
+.mrg-top {
+	margin-top: 20px;
+}
+
+/*Для адаптива*/
+
+.top-right {
+	display: none;
+}
+
 /*Футер*/
 .footer {
 	position: absolute;
@@ -255,3 +624,106 @@ h1 {
 	color: rgb(29,132,198);
 }
 
+/*Адаптивность*/
+
+@media (max-width:1200px) {
+	.step-text {
+		display: none;
+	}
+
+	.step-2 {
+    margin-top: 10px;
+	}
+	.form {
+    width: 80%;
+	}
+}
+
+
+@media (max-width:450px) {
+
+	.right {
+		display: none!important;
+	}
+
+	.top-right {
+		display: block!important;
+	}
+	.top-right {
+	margin-top: 200px;
+}
+
+.top-right p {
+	float: left;
+	margin-left: 10px;
+	color:rgb(29,132,198);
+}
+	.step {
+		display: none;
+	}
+
+	.info {
+		width: 100%;
+	}
+
+	.header img { 
+    	margin-right: auto;
+   	 	margin-left: auto;
+    	width: 80%;
+    	float: none;
+    	height: auto;
+	}
+
+	.info {
+		margin-top: 200px;
+	}
+
+	.form{
+		margin-top: 50px;
+	}
+
+	.top-panel {
+		width: 100%;
+    	float: none;
+    	margin-top: 0;
+	}
+
+	.top-panel p {
+		text-align: center;
+		width:30%;
+	}
+
+	.top-panel-log {
+		width: 100%;
+    	float: none;
+    	margin-top: 0;
+	}
+
+	.top-panel-log p { 
+		display: none;
+	}
+	.header {
+    	text-align: center;
+	}
+	.mrg-non {
+		margin-right: auto!important;
+	}
+	.rules-container {
+		width: 100%;
+	}
+	.center {
+		width: 100%;
+	}
+}
+
+@media (max-width:375px) {
+	.form {
+    margin-top: 135px;
+	}
+	.top-panel p {
+	width:28%;
+	}
+	.rules-container {
+		margin-top: 170px;
+	}
+}
