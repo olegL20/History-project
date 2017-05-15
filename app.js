@@ -24,7 +24,18 @@ let users = require('./routes/users');
 let auth = require('./routes/auth');
 
 let app = express();
-
+app.get('/users/facebook',passport.authenticate('facebook'));
+app.get('/users/facebook/callback',passport.authenticate('facebook',
+    {
+        successRedirect: '/',
+        failureRedirect: '/users/facebook'
+    }));
+app.get('/users/google',passport.authenticate('google',{scope: ['profile','email']}));
+app.get('/users/google/callback',
+    passport.authenticate('google',
+        {successRedirect: '/',
+            failureRedirect: '/users/login'
+        }));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -45,9 +56,14 @@ app.use(
         resave: false
     })
 );
+require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
+let Account = require('./models/user');
+passport.use(new LocalStrategy(Account.authenticate()));
 
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 app.use
 (
     validator(
@@ -83,19 +99,8 @@ app.use(function(req, res, next) {
 
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  res.locals.success_msg= req.flash('success_msg');
-  res.locals.error_msg= req.flash('error_msg');
-  res.locals.error= req.flash('error');
-  next();
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
-app.listen(3000,function () {});
+
+app.listen(3000,function () { console.log("Server started")});
 
 module.exports = app;
